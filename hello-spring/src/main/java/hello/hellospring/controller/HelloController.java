@@ -3,11 +3,18 @@ package hello.hellospring.controller;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
 public class HelloController {
+    //@GetMapping
     // get 방식의 method
+    // 받는 url name
+
     @GetMapping("hello")
+    // 정적인 컨텐츠
     public String hello(Model model){
         model.addAttribute("data", "hello!!");
         /*
@@ -19,4 +26,41 @@ public class HelloController {
         * */
         return "hello";
     }
+    @GetMapping("hello-mvc")
+    // MVC, template 엔진
+    public String helloMvc(@RequestParam("name") String name, Model model){
+        model.addAttribute("name",name);
+        return "hello-template";
+        // 받는 template engine
+    }
+
+    @GetMapping("hello-string")
+    @ResponseBody //http body 직접 반환
+    public String helloSpring(@RequestParam("name") String name){
+        return "hello "+name;
+    }
+
+    @GetMapping("hello-api")
+    @ResponseBody //Json 반환이 기본이다.
+    // Api
+    public Hello helloApi(@RequestParam("name") String name){
+        Hello hello = new Hello();
+        hello.setName(name);
+        return hello;
+    }
+
+    static class Hello {
+        private String name;
+        //getter,setter = 자바bean 방식, property 방식
+        public String getName() {
+            return name;
+        }
+
+        public void setName(String name) {
+            this.name = name;
+        }
+    }
+
+
+
 }
