@@ -8,7 +8,7 @@ import java.util.List;
 
 import static org.assertj.core.api.Assertions.*;
 
-public class MemoryMemberRepositoryTest {
+class MemoryMemberRepositoryTest {
 
     MemoryMemberRepository repository = new MemoryMemberRepository();
     /*
@@ -21,7 +21,6 @@ public class MemoryMemberRepositoryTest {
     public void afterEach(){
         repository.clearStore();
     }
-
 
 
     @Test
@@ -46,7 +45,7 @@ public class MemoryMemberRepositoryTest {
 
         Member result = repository.findByName("spring1").get();
         // Assertions.assertEquals(member, result);
-        assertThat(result).isEqualTo(member1); //요즘 사용하는 것
+        assertThat(result).isEqualTo(member1); // 요즘 사용하는 것
     }
 
     @Test
