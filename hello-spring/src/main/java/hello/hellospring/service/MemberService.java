@@ -3,18 +3,21 @@ package hello.hellospring.service;
 import hello.hellospring.domain.Member;
 import hello.hellospring.repository.MemberRepository;
 import hello.hellospring.repository.MemoryMemberRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
 
-@Service
+// @Service - spring bean test
 public class MemberService {
 
     // private final MemberRepository memberRepository = new MemoryMemberRepository(); DI전
     private final MemberRepository memberRepository;
 
+
     //외부에서 넣어주도록 바꿔준다 new() 생성이 아닌
+    // @Autowired - spring bean test : 스프링 컨테이너에 올라가는 것들만 @Autowired가 동작한다
     public MemberService(MemberRepository memberRepository) {
         this.memberRepository = memberRepository;
     }
