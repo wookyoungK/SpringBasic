@@ -27,14 +27,14 @@ public class MemoryMemberRepository implements MemberRepository {
         //null 체크
         return Optional.ofNullable(store.get(id));
     }
-
+    // 람다식, Optional 클래스
     @Override
     public Optional<Member> findByName(String name) {
        return  store.values().stream()
                 .filter(member -> member.getName().equals(name))
                 .findAny();
     }
-
+    // 제네릭스 보기
     @Override
     public List<Member> findAll() {
         return new ArrayList<>(store.values());

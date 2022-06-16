@@ -28,6 +28,7 @@ public class HelloController {
     }
     @GetMapping("hello-mvc")
     // MVC, template 엔진
+    //@RequestParam 외부에서 파라미터를 받는 어노테이션
     public String helloMvc(@RequestParam("name") String name, Model model){
         model.addAttribute("name",name);
         return "hello-template";

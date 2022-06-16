@@ -1,5 +1,7 @@
 package hello.hellospring.domain;
-
+/*
+* 도메인 주로 데이터베이에 저장 관리됨
+* */
 public class Member {
     private Long id;
     private String name;
