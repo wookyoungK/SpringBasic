@@ -5,7 +5,7 @@ import org.springframework.stereotype.Repository;
 
 import java.util.*;
 
-// @Repository - spring bean test
+// @Repository - 추가 시 컴포넌트 스캔 및 자동 의존( 주로 사용) 제외 시 - 직접 spring bean 등록
 public class MemoryMemberRepository implements MemberRepository {
 
     // 실무에서는 동시성 문제가 있어서 해당 변수들을 다른방법으로 고려해봐야한다.

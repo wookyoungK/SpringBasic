@@ -15,7 +15,11 @@ public class MemberController {
 
     private final MemberService memberService;
 
+    //private final MemberService memberService = new MemberService(); new 로 생성을 하면 다른곳에서도 계속 사용하기때문에 x
+
+
     @Autowired
+    //생성자
     public MemberController(MemberService memberService) {
         this.memberService = memberService;
     }
