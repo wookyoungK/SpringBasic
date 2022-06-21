@@ -44,7 +44,6 @@ public class JdbcMemberRepository implements MemberRepository{
         } finally {
             close(conn, pstmt, rs);
         }
-        return null;
     }
     @Override
     public Optional<Member> findById(Long id) {
