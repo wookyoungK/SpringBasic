@@ -1,36 +1,30 @@
 package hello.hellospring.service;
 
 import hello.hellospring.domain.Member;
+import hello.hellospring.repository.MemberRepository;
 import hello.hellospring.repository.MemoryMemberRepository;
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.transaction.annotation.Transactional;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
-// 단위 테스트
-// 자바로 순수하게 단위 테스트하는 것, 가급적이면 단위 테스트로 하는게 좋다.
-class MemberServiceTest {
+// 통합 테스트
+// 속도가 좀 느리다.
+@SpringBootTest // 스프링 컨테이너와 테스트를 함께 실행한다.
+@Transactional
+// 테스트 케이스에 이 애노테이션이 있으면, 테스트 시작 전에 트랜잭션을 시작하고, 테스트 완료 후에 항상 롤백한다.
+// 이렇게 하면 DB에 데이터가 남지 않으므로 다음 테스트에 영향을 주지 않는다.
+class MemberServiceIntegrationTest {
 
+    @Autowired
     MemberService memberService;
-    //여기서 왜 이부분을 추가해주는지 ??
-    MemoryMemberRepository memberRepository;
-    //test에 있는 인스턴스(저장소)를 같은 것을 쓰기위해서
-
-    @BeforeEach //각 테스트 실행전에
-    public void beforeEach(){
-
-        // 멤버서비스에 같은메모리멤버리포를 넣어준다
-        //DI : Dependency Injection
-        memberRepository = new MemoryMemberRepository();
-        memberService = new MemberService(memberRepository);
-    }
-    @AfterEach
-    public void afterEach(){
-        memberRepository.clearStore();
-    }
+    @Autowired
+    MemberRepository memberRepository;
 
 
     //테스트 코드에서는 한글명으로 해주어도 상관은 없다 빌드시 포함되지않는다.
@@ -63,26 +57,6 @@ class MemberServiceTest {
         assertThat(e.getMessage()).isEqualTo("이미 존재하는 회원입니다.");
 
 
-/*        memberService.join(member1);
-        try {
-            memberService.join(member2);
-            fail();
-        }catch (IllegalStateException e){
-            assertThat(e.getMessage()).isEqualTo("이미 존재하는 회원입니다.");
-        }*/
-
-        //then
-
-
     }
 
-
-
-    @Test
-    void findMembers() {
-    }
-
-    @Test
-    void findOne() {
-    }
 }
