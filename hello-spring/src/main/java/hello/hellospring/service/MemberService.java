@@ -41,6 +41,7 @@ public class MemberService {
         //그냥 바로 가져올 수 있지만 권장하지않음
         // 있으면 가져오고 없으면 default값이나 메서드 실행하는 것도 많이 사용
         // result.orElseGet()
+        // 핵심관심사항 - AOP
 
         
         memberRepository.save(member);
@@ -61,7 +62,7 @@ public class MemberService {
     public List<Member> findMembers(){
         return memberRepository.findAll();
     }
-
+    // 핵심관심사항 - AOP
     public Optional<Member> findOne(Long memeberID){
         return memberRepository.findById(memeberID);
     }
