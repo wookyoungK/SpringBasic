@@ -3,13 +3,13 @@ package hello.core;
 import hello.core.member.Grade;
 import hello.core.member.Member;
 import hello.core.member.MemberService;
-import hello.core.member.MemberServiceimpl;
+import hello.core.member.MemberServiceImpl;
 
 public class MemberApp {
     public static void main(String[] args) {
         //순수 자바 테스트
         //메인메서드에서 테스트 하는 것은 안좋다
-        MemberService memberService = new MemberServiceimpl();
+        MemberService memberService = new MemberServiceImpl();
         Member member = new Member(1L, "memberA", Grade.VIP);
         memberService.join(member);
 

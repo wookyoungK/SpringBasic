@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Test;
 // 테스트는 필수
 public class MemberServiceTest {
 
-    MemberService memberService = new MemberServiceimpl();
+    MemberService memberService = new MemberServiceImpl();
 
     @Test
     void join(){
