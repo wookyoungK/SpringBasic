@@ -12,8 +12,11 @@ public class OrderApp {
     public static void main(String[] args) {
         //순수 자바 테스트
         //메인메서드에서 테스트 하는 것은 안좋다
-        MemberService memberService = new MemberServiceImpl();
-        OrderService orderService = new OrderServiceImpl();
+        //MemberService memberService = new MemberServiceImpl();
+        //OrderService orderService = new OrderServiceImpl();
+        AppCofig appCofig = new AppCofig();
+        MemberService memberService = appCofig.memberService();
+        OrderService orderService = appCofig.orderService();
 
         Long memberId = 1L;
         Member member = new Member(memberId,"itemA", Grade.VIP);

@@ -7,9 +7,12 @@ import hello.core.member.MemberServiceImpl;
 
 public class MemberApp {
     public static void main(String[] args) {
-        //순수 자바 테스트
+
         //메인메서드에서 테스트 하는 것은 안좋다
-        MemberService memberService = new MemberServiceImpl();
+        //순수 자바 테스트
+        //MemberService memberService = new MemberServiceImpl();
+        AppCofig appCofig = new AppCofig();
+        MemberService memberService = appCofig.memberService();
         Member member = new Member(1L, "memberA", Grade.VIP);
         memberService.join(member);
 
