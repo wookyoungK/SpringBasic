@@ -1,7 +1,6 @@
 package hello.core;
 
 import hello.core.discount.DiscountPolicy;
-import hello.core.discount.FixDiscountPolicy;
 import hello.core.discount.RateDiscountPolicy;
 import hello.core.member.MemberRepository;
 import hello.core.member.MemberService;
@@ -13,7 +12,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
-public class AppCofig  {
+public class AppConfig {
 /*     구현 객체를 생성
      생성자를 통해서 주입
 
@@ -23,18 +22,36 @@ public class AppCofig  {
 * @Bean : 스프링 컨테이너에 객체를 스프링 빈으로 등록
 *
 * */
+
+/*    singleton을 어긴 것 일까?
+    @Bean memberService ->   new MemoryMemberRepository();
+    @Bean orderService ->  new MemoryMemberRepository();
+
+    논리적으로는 테스트를 해보면
+    call AppConfig.memberRepository가 3번 호출 되어야 한다
+
+    결과 :
+    call AppConfig.memberService
+    call AppConfig.memberRepository
+    call AppConfig.orderService
+    -> spring container가 해주는 일 보기
+*/
+
     @Bean
     public MemberService memberService(){
+        System.out.println("call AppConfig.memberService");
         return new MemberServiceImpl(memberRepository());
     }
 
     @Bean
     public MemberRepository memberRepository() {
+        System.out.println("call AppConfig.memberRepository");
         return new MemoryMemberRepository();
     }
 
     @Bean
     public OrderService orderService(){
+        System.out.println("call AppConfig.orderService");
         return new OrderServiceImpl(memberRepository(), discountPolicy());
     }
 
