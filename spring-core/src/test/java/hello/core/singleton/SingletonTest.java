@@ -1,8 +1,7 @@
 package hello.core.singleton;
 
-import hello.core.AppCofig;
+import hello.core.AppConfig;
 import hello.core.member.MemberService;
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.context.ApplicationContext;
@@ -19,12 +18,12 @@ public class SingletonTest {
     즉, 메모리 낭비가 심하다. -> 객체가 딱 1개만 생성되고, 공유하도록 설계하면 된다. = 싱글톤 패턴
     */
     void pureContainer() {
-        AppCofig appCofig = new AppCofig();
+        AppConfig appConfig = new AppConfig();
         //1. 조회 : 호출할 때 마다 객체를 생성
-        MemberService memberService1 = appCofig.memberService();
+        MemberService memberService1 = appConfig.memberService();
 
         //2. 조회 : 호출할 때 마다 객체를 생성
-        MemberService memberService2 = appCofig.memberService();
+        MemberService memberService2 = appConfig.memberService();
 
         //참조값확인
         System.out.println("memberService1 = " + memberService1);
@@ -53,7 +52,7 @@ public class SingletonTest {
     void springContainer(){
 
         //AppCofig appCofig = new AppCofig();
-        ApplicationContext ac = new AnnotationConfigApplicationContext(AppCofig.class);
+        ApplicationContext ac = new AnnotationConfigApplicationContext(AppConfig.class);
         MemberService memberService1 = ac.getBean("memberService", MemberService.class);
         MemberService memberService2 = ac.getBean("memberService",MemberService.class);
 

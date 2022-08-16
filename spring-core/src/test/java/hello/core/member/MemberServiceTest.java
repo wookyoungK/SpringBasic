@@ -1,6 +1,6 @@
 package hello.core.member;
 
-import hello.core.AppCofig;
+import hello.core.AppConfig;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -14,8 +14,8 @@ public class MemberServiceTest {
     // 각 test 실행 전 먼저 무조건 실행
     @BeforeEach
     public void beforeEach(){
-        AppCofig appCofig = new AppCofig();
-        memberService = appCofig.memberService();
+        AppConfig appConfig = new AppConfig();
+        memberService = appConfig.memberService();
     }
 
     @Test

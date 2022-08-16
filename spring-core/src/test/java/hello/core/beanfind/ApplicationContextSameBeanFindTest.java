@@ -1,6 +1,5 @@
 package hello.core.beanfind;
 
-import hello.core.AppCofig;
 import hello.core.member.MemberRepository;
 import hello.core.member.MemoryMemberRepository;
 import org.junit.jupiter.api.DisplayName;
@@ -10,7 +9,6 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
-import java.sql.SQLOutput;
 import java.util.Map;
 
 import static org.assertj.core.api.Assertions.assertThat;
