@@ -35,6 +35,9 @@ public class AppConfig {
     call AppConfig.memberRepository
     call AppConfig.orderService
     -> spring container가 해주는 일 보기
+
+    @Bean만 사용해도 스프링 빈으로 등록되지만, 싱글톤을 보장하지 않는다.
+    스프링 설정 정보는 항상 @Configuration을 사용하자
 */
 
     @Bean
