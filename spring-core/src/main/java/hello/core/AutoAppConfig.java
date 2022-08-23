@@ -1,5 +1,8 @@
 package hello.core;
 
+import hello.core.member.MemberRepository;
+import hello.core.member.MemoryMemberRepository;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.FilterType;
@@ -28,4 +31,14 @@ import org.springframework.context.annotation.FilterType;
         excludeFilters = @ComponentScan.Filter(type = FilterType.ANNOTATION, classes = Configuration.class)
 )
 public class AutoAppConfig {
+/*
+    수동으로 같은 이름의 빈을 선언해주면 수동으로 잡은 것이 더 우선시 된다. 하지만 이런 애매한 경우를 안 만드는 것이 좋다.
+    최근 스프링 부트에서는 오류로 결과를 나오도록 변경했다.
+    변경하려면 application.properties 에서 설정 -> spring.main.allow-bean-definition-overriding=false
+
+    @Bean(name = "memoryMemberRepository")
+    MemberRepository memberRepository(){
+        return new MemoryMemberRepository();
+    }
+ */
 }
