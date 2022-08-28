@@ -37,9 +37,21 @@ public class OrderServiceImpl implements OrderService{
     이름 그대로 생성자를 통해서 의존 관계를 주입 받는 방법이다.
     지금까지 우리가 진행했던 방법이 바로 생성자 주입이다.
 
+    기본으로 생성자 주입을 사용하고, 필수 값이 아닌 경우에는 수정자 주입 방식을 옵션으로 부여하면 된다.
+    생성자 주입과 수정자 주입을 동시에 사용할 수 있다.
+
+    항상 생성자 주입을 선택 그리고 가끔 옵션이 필요하면 수정자 주입을 선택해라. 필드 주입은 사용하지
+    않는게 좋다.
+
     특징
     생성자 호출시점에 딱 1번만 호출되는 것이 보장된다.
     불변, 필수 의존관계에 사용
+
+    장점
+    생성자 주입을 사용하면 필드에 final 키워드를 사용할 수 있다. 그래서 생성자에서 혹시라도 값이
+    설정되지 않는 오류를 컴파일 시점에 막아준다.
+
+
     */
     @Autowired
     public OrderServiceImpl(MemberRepository memberRepository, DiscountPolicy discountPolicy) {
