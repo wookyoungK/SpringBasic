@@ -9,7 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Component
-@RequiredArgsConstructor // RequiredArg -> final이 붙은 생성자를 만들어준다
+//@RequiredArgsConstructor // RequiredArg -> final이 붙은 생성자를 만들어준다
 public class OrderServiceImpl implements OrderService{
 
     // 인터페이스에만 의존하도록 변경
@@ -20,6 +20,7 @@ public class OrderServiceImpl implements OrderService{
 
     private final MemberRepository memberRepository;
     private final DiscountPolicy discountPolicy;
+
 
 
     /*
@@ -56,14 +57,12 @@ public class OrderServiceImpl implements OrderService{
 
     */
 
-    /*
         // lombok 이 만들어준다
         @Autowired
         public OrderServiceImpl(MemberRepository memberRepository, DiscountPolicy discountPolicy) {
             this.memberRepository = memberRepository;
             this.discountPolicy = discountPolicy;
         }
-    */
 
 
     /*
