@@ -82,8 +82,8 @@ public class OrderServiceImpl implements OrderService{
         타입 매칭의 결과가 2개 이상일 때 필드 명, 파라미터 명으로 빈 이름 매칭
         */
 //        public OrderServiceImpl(MemberRepository memberRepository,@Qualifier("mainDiscountPolicy") DiscountPolicy discountPolicy) {
-//        public OrderServiceImpl(MemberRepository memberRepository,@MainDiscountPolicy  DiscountPolicy discountPolicy) {
-        public OrderServiceImpl(MemberRepository memberRepository,DiscountPolicy discountPolicy) {
+        public OrderServiceImpl(MemberRepository memberRepository,@MainDiscountPolicy  DiscountPolicy discountPolicy) {
+//        public OrderServiceImpl(MemberRepository memberRepository,DiscountPolicy discountPolicy) {
             this.memberRepository = memberRepository;
             this.discountPolicy = discountPolicy;
         }
