@@ -13,8 +13,10 @@ import org.springframework.beans.factory.InitializingBean;
     초기화, 소멸 메서드의 이름을 변경할 수 없다.
     내가 코드를 고칠 수 없는 외부 라이브러리에 적용할 수 없다.
     -> 옛날거라 사용x
-* */
-public class NetworkClient implements InitializingBean, DisposableBean {
+    public class NetworkClient implements InitializingBean, DisposableBean {
+*/
+
+public class NetworkClient {
 
     private String url;
 
@@ -40,6 +42,18 @@ public class NetworkClient implements InitializingBean, DisposableBean {
         System.out.println("close: " + url);
     }
 
+
+    public void init() throws Exception {
+        System.out.println("NetworkClient.init");
+        connect();
+        call("초기화 연결 메시지");
+    }
+    public void close() throws Exception {
+        System.out.println("NetworkClient.close");
+        disconnect();
+    }
+
+/*
     @Override
     public void afterPropertiesSet() throws Exception {
         connect();
@@ -50,4 +64,5 @@ public class NetworkClient implements InitializingBean, DisposableBean {
     public void destroy() throws Exception {
         disconnect();
     }
+    */
 }
