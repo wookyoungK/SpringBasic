@@ -30,7 +30,6 @@ public class MyLogger {
 
     @PreDestroy
     public void close(){
-        System.out.println("");
         System.out.println("["+uuid+"]"+"[ request scope bean close:" + this);
     }
 }
